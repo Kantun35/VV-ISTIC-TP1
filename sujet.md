@@ -18,4 +18,5 @@
    PR : https://github.com/apache/commons-collections/pull/178/files
 The bug concerned a local error. the bug caused an error which blocked the CI build.
 The bug is caused by multiple issues. First, a function called Math.floorMod(long,int) added in jdk11+ which don't exist on jdk 8 was automatically used instead of Math.floorMod(long,long), so he just had to cast the variable to the wanted type. Second, the javadoc caused an error during the build {@link #add()} was shown in the doc instead of {@link #add(Object)}, it happened because the method add with no parameter doesn't exist in this context. And third, the --no-transfer-progress option to the maven command seems to not be usable in openjd8 according to the author of the commit.
-   
+
+3. The experiment that Netflix is running regularly is based on an internal service name Chaos Monkey which randomly selects virtual machine instances hosting their production servers and shut them down. This experiment require to only be used during working hours so that engineers can react fast to correct the problem.
